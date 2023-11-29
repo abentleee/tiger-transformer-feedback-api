@@ -10,6 +10,7 @@
     "build": "rm -rf build; mkdir build; cp package.json build/; cp yarn.lock build/; cp -R node_modules/ build/node_modules/; cp -R src/ build/src/"
   },
   "dependencies": {
+    "cors": "^2.8.5",
     "dotenv": "^16.3.1",
     "express": "^4.18.2",
     "express-basic-auth": "^1.2.1",

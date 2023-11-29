@@ -1,5 +1,6 @@
 import express from 'express';
 import basicAuth from 'express-basic-auth';
+import cors from 'cors';
 import { insertFeedback } from './services/redisService.js';
 import dotenv from 'dotenv';
 dotenv.config();
@@ -18,7 +19,8 @@ app.use(basicAuth({
     unauthorizedResponse: {
         message: 'Bad credentials',
     },
-}))
+}));
+app.use(cors());
 
 app.post('/api/v1/feedback', async (req, res) => {
     // insert into redis
