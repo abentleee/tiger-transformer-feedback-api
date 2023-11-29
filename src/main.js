@@ -27,6 +27,10 @@ app.post('/api/v1/feedback', async (req, res) => {
     res.status(201).send();
 });
 
+app.get('/', (req, res) => {
+    res.send('Hello world!');
+});
+
 app.listen(port, () => {
     console.log(`tiger-transformer-feedback-api listening on port ${port}`);
 });

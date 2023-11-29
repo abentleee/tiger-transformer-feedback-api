@@ -6,7 +6,8 @@
   "license": "MIT",
   "type": "module",
   "scripts": {
-    "start": "node src/main.js"
+    "start": "node src/main.js",
+    "build": "rm -rf build; mkdir build; cp package.json build/; cp yarn.lock build/; cp -R node_modules/ build/node_modules/; cp -R src/ build/src/"
   },
   "dependencies": {
     "dotenv": "^16.3.1",
