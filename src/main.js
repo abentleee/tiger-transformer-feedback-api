@@ -20,7 +20,9 @@ app.use(basicAuth({
         message: 'Bad credentials',
     },
 }));
-app.use(cors());
+app.use(cors({
+    allowedHeaders: ['Authorization', 'Content-Type']
+}));
 
 app.post('/api/v1/feedback', async (req, res) => {
     // insert into redis
