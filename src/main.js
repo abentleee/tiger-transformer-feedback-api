@@ -1,7 +1,7 @@
 import express from 'express';
 import basicAuth from 'express-basic-auth';
 import cors from 'cors';
-import { insertFeedback } from './services/redisService.js';
+import { insertSuccessfulTransaction } from './services/redisService.js';
 import dotenv from 'dotenv';
 dotenv.config();
 
@@ -21,15 +21,20 @@ app.use(basicAuth({
     },
 }));
 app.use(cors({
-    allowedHeaders: ['Authorization', 'Content-Type']
+    allowedHeaders: ['Authorization', 'Content-Type'],
+    credentials: true,
 }));
 
-app.post('/api/v1/feedback', async (req, res) => {
+app.post('/api/v1/success', async (req, res) => {
     // insert into redis
-    await insertFeedback(req.body);
+    await insertSuccessfulTransaction(req.body);
 
     res.status(201).send();
 });
+
+// TODO: implement /api/v1/error endpoint
+
+// TODO: implement /api/v1/feedback endpoint
 
 app.get('/', (req, res) => {
     res.send('Hello world!');
