@@ -14,7 +14,6 @@ export const insertSuccessfulTransaction = async (req) => {
         txHash: req.txHash,
         tigerId: req.tigerId,
         is3DTo2DTransformation: req.is3DTo2DTransformation,
-        exception: req.exception,
     }
 
     await client.connect();

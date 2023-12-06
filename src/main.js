@@ -14,6 +14,7 @@ let users = {};
 users[authUser] = authPass;
 
 app.use(express.json())
+app.use(express.text())
 app.use(basicAuth({
     users,
     unauthorizedResponse: {
@@ -26,6 +27,8 @@ app.use(cors({
 }));
 
 app.post('/api/v1/success', async (req, res) => {
+    console.log(`processing /api/v1/success...`);
+
     // insert into redis
     await insertSuccessfulTransaction(req.body);
 
