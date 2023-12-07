@@ -7,7 +7,8 @@
   "type": "module",
   "scripts": {
     "start": "node src/main.js",
-    "build": "rm -rf build; mkdir build; cp package.json build/; cp yarn.lock build/; cp -R node_modules/ build/node_modules/; cp -R src/ build/src/"
+    "build": "rm -rf build; mkdir build; cp package.json build/; cp yarn.lock build/; cp -R node_modules/ build/node_modules/; cp -R src/ build/src/",
+    "deploy": "git push heroku main"
   },
   "dependencies": {
     "cors": "^2.8.5",
