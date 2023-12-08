@@ -1,7 +1,7 @@
 import express from 'express';
 import basicAuth from 'express-basic-auth';
 import cors from 'cors';
-import { insertSuccessfulTransaction } from './services/redisService.js';
+import { insertSuccessfulTransaction, insertErrorTransaction } from './services/redisService.js';
 import dotenv from 'dotenv';
 dotenv.config();
 
@@ -35,7 +35,14 @@ app.post('/api/v1/success', async (req, res) => {
     res.status(201).send();
 });
 
-// TODO: implement /api/v1/error endpoint
+app.post('/api/v1/error', async (req, res) => {
+    console.log(`processing /api/v1/error...`);
+
+    // insert into redis
+    await insertErrorTransaction(req.body);
+
+    res.status(201).send();
+});
 
 // TODO: implement /api/v1/feedback endpoint
 
