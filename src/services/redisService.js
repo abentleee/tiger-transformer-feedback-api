@@ -10,6 +10,7 @@ export const insertSuccessfulTransaction = async (req) => {
 
     const key = `success-${Math.floor(new Date().getTime() / 1000)}`;
     const value = {
+        browserInfo: req.browserInfo,
         walletAddress: req.walletAddress,
         txHash: req.txHash,
         tigerId: req.tigerId,
